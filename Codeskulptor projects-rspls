@@ -1,0 +1,61 @@
+def playerinput(name1):
+  code1={
+      "rock": '0',
+      "spock": '1',
+      "paper": '2',
+      "lizard": '3',
+      "scissor": '4'
+ }
+  pin1=code1.get(name1)
+  return pin1
+def computerinput(name2):
+    code2={
+        '0':'rock',
+        '1':'spock',
+        '2':'paper',
+        '3':'lizard',
+        '4':'scissor'
+    }
+    pin2=code2.get(name2)
+    return pin2
+import simplegui
+
+def output(name1):
+ if name1=='rock' or name1=='spock' or name1=='paper' or name1=='lizard' or name1=='scissor':
+    d = playerinput(name1)
+    ans1 = int(d)
+
+    import random
+    c=random.randint(0,4)
+    name2=str(c)
+    ans2=c
+    namee=computerinput(name2)
+
+    print'Player chooses '+name1+' and Computer chooses '+namee
+    if (ans1-ans2)%5==1 or (ans1-ans2)%5==2:
+     print'Player Wins'
+    elif (ans1-ans2)%5==3 or (ans1-ans2)%5==4:
+     print'Player Lost'
+    elif(ans1-ans2)==0:
+     print"It's draw"
+ elif name1=='help': 
+    print"type rock, spock, paper, lizard and scissor to play"
+    print'Type quit to end the game'
+ elif name1=='quit':
+    print'Game Ends'
+ else:
+     print name1+' is Invalid Input'
+ print""       
+ 
+def user_input(x):
+     name1=x
+     output(name1)
+        
+
+f=simplegui.create_frame('RSP',200,200)
+f.add_input('Enter Command',user_input,200)
+f.start()
+
+
+
+
