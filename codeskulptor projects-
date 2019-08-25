@@ -1,0 +1,52 @@
+import simplegui
+def new_game():
+     global i
+     global secret_number
+     i=1
+     print''
+     pass
+def range100():
+    import random
+    global secret_number
+    secret_number= random.randint(0, 100)
+    print 'Game Starts'
+    new_game()
+def range1000():
+    import random
+    global secret_number
+    secret_number = random.randint(0, 1000)
+    print 'Game Starts'
+    new_game()
+def input_guess(guess):
+    global i
+    if i<5:
+       b = int(guess)
+       try:
+         a=secret_number
+         x=5-i
+         c=str(x)
+         print c+' Guesses Remain.'
+         i=i+1
+         if a==b:
+           print'PLayer Wins'
+           print'Start Game again'
+           new_game()
+         elif a>b:
+           print'Guess Higher'
+         elif a<b:
+           print 'Guess Lower'
+       except NameError:
+          print'select secret number first'
+    else:
+        print'Player Lost'
+        print'Secret number was '+str(secret_number)
+        print'Start Game Again'
+        print''
+        pass
+f = simplegui.create_frame('Guessing Game', 300, 300)
+f.add_button('From 0 to 100', range100)
+f.add_button('From 0 to 1000', range1000)
+f.add_input('Enter Your Guess', input_guess, 200)
+new_game()
+f.start()
+
